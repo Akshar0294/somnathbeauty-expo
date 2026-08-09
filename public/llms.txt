@@ -1,0 +1,15 @@
+# Soft Shine Cosmetic
+
+> Soft Shine Cosmetic is a beauty and makeup products wholesale business in Veraval, Gujarat, connecting beauty businesses with products and curated beauty expos.
+
+This is a one-page public website. Expo registration is available through the homepage and successful registrations receive downloadable PDF tickets with QR codes.
+
+## Public site
+
+- [Homepage](/): About the business, active expos, contact details, sponsors, and registration flow.
+- [Sitemap](/sitemap.xml): Indexable public URLs.
+- [Robots](/robots.txt): Crawler access rules.
+
+## Optional
+
+- [Full business context](/llms-full.txt): More detailed information about the business, expo, registration, and contact flow.
