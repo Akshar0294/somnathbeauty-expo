@@ -8,6 +8,7 @@ export const registrationSchema = z.object({
   phone: indianPhone,
   email: z.string().trim().email("Enter a valid email address.").max(160).optional().or(z.literal("")),
   city: z.string().trim().min(2, "Enter your city.").max(80),
+  category: z.enum(["Parlour Owner", "Others"]),
   gender: z.literal("Female"),
   termsAccepted: z.literal(true, { message: "Please accept the terms and conditions." })
 });

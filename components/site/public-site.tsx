@@ -15,14 +15,14 @@ type View = "HOME" | "EXHIBITIONS" | "EVENT_DETAILS" | "REGISTRATION" | "PAYMENT
 type PaymentOrder = { registrationId: string; registrationReference: string; orderId: string; amount: number; currency: string; keyId: string };
 type SuccessReceipt = { ticketId: string; registrationId: string; eventName: string; visitorName: string; amount: number; paymentId: string; venue: string; startDate: string; endDate: string };
 
-const initialForm: RegistrationForm = { visitorName: "", phone: "", email: "", city: "", gender: "Female", termsAccepted: false };
+const initialForm: RegistrationForm = { visitorName: "", phone: "", email: "", city: "", category: "Others", gender: "Female", termsAccepted: false };
 
 const knownGujaratiCopy: Record<string, TranslationKey> = {
   "Somnath Beauty Expo": "somnathBeautyExpo",
   "Beauty, cosmetics and professional makeup discoveries for the women shaping the industry.": "eventShortDescription",
   "A focused beauty and cosmetics expo for retailers, salons, makeup artists, resellers and beauty professionals.": "eventFullDescription",
   "These expos are exclusively for female visitors. Please carry a valid photo ID.": "eventTerms",
-  "Somnath Expo Hall": "somnathExhibitionHall",
+  "Kapishwar Partyplot, Veraval": "kapishwarPartyplot",
   "Veraval, Gujarat": "veravalGujarat",
   Veraval: "veraval",
   Gujarat: "gujarat",
@@ -538,8 +538,8 @@ function RegistrationView({ event, form, setForm, flowError, setFlowError, isSub
           <FormField label={t("phoneNumber")} required><div className="mt-1.5 flex"><span className="inline-flex items-center rounded-l-lg border border-r-0 border-line bg-slate-100 px-3 text-sm font-normal text-muted">{formatDigits("+91", locale)}</span><input required type="tel" value={form.phone.replace(/^\+91/, "")} onChange={(e) => { setFlowError(""); setForm({ ...form, phone: e.target.value }); }} className="min-w-0 flex-1 rounded-r-lg border border-line bg-slate-50 px-3 py-3 text-sm font-normal outline-none focus:border-purple focus:bg-white" placeholder={t("mobilePlaceholder")} inputMode="numeric" autoComplete="tel" /></div></FormField>
           <FormField label={t("emailAddress")}><input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-1.5 w-full rounded-lg border border-line bg-slate-50 px-3 py-3 text-sm font-normal outline-none focus:border-purple focus:bg-white" placeholder="you@example.com" autoComplete="email" /></FormField>
           <FormField label={t("city")} required><input required value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} className="mt-1.5 w-full rounded-lg border border-line bg-slate-50 px-3 py-3 text-sm font-normal outline-none focus:border-purple focus:bg-white" placeholder={t("yourCity")} autoComplete="address-level2" /></FormField>
+          <FormField label={t("category")} required><select required value={form.category} onChange={(e) => { setFlowError(""); setForm({ ...form, category: e.target.value as RegistrationForm["category"] }); }} className="mt-1.5 w-full rounded-lg border border-line bg-slate-50 px-3 py-3 text-sm font-normal outline-none focus:border-purple focus:bg-white"><option value="Parlour Owner">{t("parlourOwner")}</option><option value="Others">{t("others")}</option></select></FormField>
           <FormField label={t("gender")} required><input readOnly value={t("female")} className="mt-1.5 w-full rounded-lg border border-line bg-[#f3f0f4] px-3 py-3 text-sm font-normal text-muted outline-none" /></FormField>
-          <div className="hidden sm:block" />
         </div>
         <label className="mt-5 flex items-start gap-2.5 text-xs leading-5 text-muted"><input required type="checkbox" checked={form.termsAccepted} onChange={(e) => setForm({ ...form, termsAccepted: e.target.checked })} className="mt-1 size-4 accent-rose" /> <span>{t("termsAgree")}</span></label>
         {flowError && <p className="mt-4 text-xs leading-5 text-[#b42318]" role="alert">{flowError}</p>}

@@ -1,4 +1,5 @@
 export type EventStatus = "OPEN" | "LIVE" | "COMPLETED" | "CLOSED";
+export type RegistrationCategory = "Parlour Owner" | "Others";
 export type PaymentStatus = "PENDING" | "PAID" | "FAILED" | "CANCELLED";
 export type RegistrationStatus = "PENDING" | "CONFIRMED" | "CANCELLED";
 
@@ -52,6 +53,7 @@ export type RegistrationForm = {
   phone: string;
   email: string;
   city: string;
+  category: RegistrationCategory;
   gender: "Female";
   termsAccepted: boolean;
 };
